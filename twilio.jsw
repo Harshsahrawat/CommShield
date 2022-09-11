@@ -1,0 +1,19 @@
+import twilio from 'twilio'
+
+export async function sendSms(phone, receiverName, senderName, messageSend) {
+    const ACCOUNT_SID =  "ACea07e234ca2ddcc08568dc0427260bbf"
+    const AUTH_TOKEN =  "e50cee42ae4a2b4c11da6d733d246735"
+    const SERVICE_SID =  "IS752be82239f12f645324e8549c9cbb31"
+
+    const twilioClient = new twilio(ACCOUNT_SID,AUTH_TOKEN);
+
+    let message = await twilioClient.messages.create({
+        to: phone,
+        from: +12062102841,
+        body: "\nHello "+receiverName+"\n"+messageSend+"\n"+"Complainer's Name: "+senderName
+    })
+
+    return message
+
+    
+}
